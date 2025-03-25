@@ -1,14 +1,38 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { addTopastes, updateToPastes } from "../redux/pasteSlice";
 
 
 function Home(){
-    const [title, setTitle] = useState("");
-    const [value, setValue] = useState("");
-    const [searchParams] = useSearchParams();
-    const pasteId = searchParams.get("pasteId"); 
+    const [title, setTitle] = useState(""); //
+    const [value, setValue] = useState("");  // textarea value
+    const [searchParams, setSearchParams] = useSearchParams(); // track id
+    const pasteId = searchParams.get("pasteId");  // 
+    const dispatch = useDispatch();
 
+    function createPaste(){
+        const paste = {
+            title : title,
+            content : value,
+            _id : pasteId || Date.now().toString(36), 
+            createdAt: new Date().toISOString()
+        }
+        if(pasteId){
+            // update
+            dispatch(updateToPastes(paste));
+        }
+        else{
+            // Create
+            dispatch(addTopastes(paste))
+        }
 
+        // After Creation or updation blank data
+        setTitle("");
+        setValue("");
+        setSearchParams({})
+        
+    }
     return(
         <>
             <div className="container text-center border py-5">
@@ -22,7 +46,9 @@ function Home(){
                             value={title}
                             onChange={(e) =>setTitle(e.target.value)} 
                         />
-                        <button className={pasteId ? "btn btn-success" : "btn btn-danger"}>
+                        <button 
+                            onClick={createPaste}
+                            className={pasteId ? "btn btn-success" : "btn btn-danger"}>
                             {
                                 pasteId ? "Update My Paste" : "Create My Paste"
                             }
