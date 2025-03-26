@@ -1,0 +1,10 @@
+Cmd1 -> npm craete vite@latest
+Cmd2 -> paste-app 
+Cmd3 -> cd paste-app
+Cmd4 -> npm install
+Cmd5 -> npm i boostrap 
+  import bootstrap link in "app.jsx import bootstrap/dist/boostrap.min.js"
+Cmd6 -> npm i react-router-dom
+step 2 : go to vite.config file update port number
+Cmd6 -> npm run dev
+Cmd6 -> npm install @reduxjs/toolkit react-redux
