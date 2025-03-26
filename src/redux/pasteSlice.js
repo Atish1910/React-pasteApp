@@ -13,7 +13,7 @@ export const pasteSlice = createSlice({
   name: 'paste',
   initialState,
   reducers: {
-    addTopastes: (state, action) => {
+    addToPastes: (state, action) => {
       const paste = action.payload;
       state.pastes.push(paste);
       localStorage.setItem("pastes", JSON.stringify(state.pastes));
@@ -50,6 +50,6 @@ export const pasteSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addTopastes, updateToPastes, resetAllPastes, removeFromPastes } = pasteSlice.actions
+export const { addToPastes, updateToPastes, resetAllPastes, removeFromPastes } = pasteSlice.actions
 
 export default pasteSlice.reducer

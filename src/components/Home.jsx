@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { addTopastes, updateToPastes } from "../redux/pasteSlice";
+import { addToPastes, updateToPastes } from "../redux/pasteSlice";
 
 
 function Home(){
@@ -24,13 +24,13 @@ function Home(){
         }
         else{
             // Create
-            dispatch(addTopastes(paste))
+            dispatch(addToPastes(paste))
         }
 
         // After Creation or updation blank data
         setTitle("");
         setValue("");
-        setSearchParams({})
+        setSearchParams({});
         
     }
     return(
