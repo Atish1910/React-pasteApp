@@ -8,7 +8,7 @@ function Navbar(){
                     <h1>hii i am navbar</h1>
                     <div className="d-flex justify-content-around align-items-center">
                         <NavLink to="/">Home</NavLink>
-                        <NavLink to={"/pastes"}>Paste</NavLink>
+                        <NavLink to={"/pastes"}>Pastes</NavLink>
                     </div>
                 </div>
             </div>

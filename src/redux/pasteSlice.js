@@ -7,7 +7,6 @@ const initialState = {
   pastes : localStorage.getItem("pastes")
   ? JSON.parse(localStorage.getItem("pastes"))
   : []
-
 }
 export const pasteSlice = createSlice({
   name: 'paste',

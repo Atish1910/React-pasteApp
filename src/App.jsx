@@ -40,7 +40,6 @@ function App() {
     <>
       <div className="">
         <RouterProvider router={router}>
-
         </RouterProvider>
       </div>
     </>
