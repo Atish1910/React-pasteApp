@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { addToPastes, updateToPastes } from "../redux/pasteSlice";
+import { useForm } from "react-hook-form";
 
 
 function Home(){
@@ -12,7 +13,14 @@ function Home(){
     const dispatch = useDispatch();
     const allPastes = useSelector((state) => state.paste.pastes);
 
-    function createPaste(){
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: {errors, isSubmitting},
+    } = useForm();
+
+    function createPaste(data){
         const paste = {
             title : title,
             content : value,
@@ -28,6 +36,7 @@ function Home(){
             dispatch(addToPastes(paste))
         }
 
+        console.log("You just submitted form", data);
         
 
         // After Creation or updation blank data
@@ -43,37 +52,54 @@ function Home(){
             setValue(paste.content);
         }
     }, [pasteId])
+
+
     return(
         <>
             <div className="container text-center border py-5">
-                <div className="row">
-                    <h1>hi i am Home</h1>
-                    <div className="d-flex align-items-center mb-4">
-                        <input 
-                            className="form-control"
-                            type="text"
-                            placeholder="Enter Title Here"
-                            value={title}
-                            onChange={(e) =>setTitle(e.target.value)} 
-                        />
-                        <button 
-                            onClick={createPaste}
-                            className={pasteId ? "btn btn-success" : "btn btn-danger"}>
+                <div className="row justify-content-center">
+                    <div className="col-6 align-items-center mb-4">
+                        <form onSubmit={handleSubmit(createPaste)}>
+                            <input 
+                                className={`form-control mb-2 ${errors.title ? "input-errors" : ""}`}
+                                type="text"
+                                placeholder="Enter Title Here"
+                                value={title}
+                                onChange={(e) =>setTitle(e.target.value)} 
+                                {
+                                    ...register("title", {
+                                        required : "Please Enter Title",
+                                        // minLength : {value : 4, message : "Enter Minium 4 Letters of Title"}
+                                    })
+                                }
+                            />
                             {
-                                pasteId ? "Update My Paste" : "Create My Paste"
+                                errors.title && <p className="text-danger">{errors.title.message}</p>
                             }
-                        </button>
-                    </div>
-                    <div className="">
-                        <textarea 
-                            className="form-control"
-                            placeholder="Enter Content Here"
-                            value={value}
-                            rows={20}
-                            onChange={(e) => setValue(e.target.value)}
-                            >
-
-                        </textarea>
+                            <textarea 
+                                className={`form-control ${errors.content? "input-errors " : ""}`}
+                                placeholder="Enter Content Here"
+                                value={value}
+                                rows={20}
+                                onChange={(e) => setValue(e.target.value)}
+                                {
+                                    ...register("content",{
+                                        required : "Please Enter Content",
+                                        // minLength : {value : 40, message : "Enter Min 40 Words"}
+                                    })
+                                }
+                                >
+                                {
+                                    errors.content && <p className="text-danger">{errors.content.message}</p>
+                                }
+                            </textarea>
+                            <div className="pt-4">
+                            <button 
+                                    className={pasteId ? "btn btn-warning" : "btn btn-create"}>
+                                    {pasteId ? "Update My Paste" : "Create My Paste"}
+                            </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
