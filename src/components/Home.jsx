@@ -17,6 +17,7 @@ function Home(){
         register,
         handleSubmit,
         watch,
+        reset,
         formState: {errors, isSubmitting},
     } = useForm();
 
@@ -38,11 +39,7 @@ function Home(){
 
         console.log("You just submitted form", data);
         
-
-        // After Creation or updation blank data
-        setTitle("");
-        setValue("");
-        setSearchParams({});
+        reset();
         
     }
     useEffect(() =>{
@@ -64,12 +61,11 @@ function Home(){
                                 className={`form-control mb-2 ${errors.title ? "input-errors" : ""}`}
                                 type="text"
                                 placeholder="Enter Title Here"
-                                value={title}
-                                onChange={(e) =>setTitle(e.target.value)} 
+                                defaultValue={title}
                                 {
                                     ...register("title", {
                                         required : "Please Enter Title",
-                                        // minLength : {value : 4, message : "Enter Minium 4 Letters of Title"}
+                                        onChange : (e) => setTitle(e.target.value)
                                     })
                                 }
                             />
@@ -79,13 +75,12 @@ function Home(){
                             <textarea 
                                 className={`form-control ${errors.content? "input-errors " : ""}`}
                                 placeholder="Enter Content Here"
-                                value={value}
-                                rows={20}
-                                onChange={(e) => setValue(e.target.value)}
+                                rows="20"
+                                defaultValue={value}
                                 {
                                     ...register("content",{
                                         required : "Please Enter Content",
-                                        // minLength : {value : 40, message : "Enter Min 40 Words"}
+                                        onChange : (e) => setValue(e.target.value)
                                     })
                                 }
                                 >
