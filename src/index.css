@@ -1,65 +1,41 @@
 :root {
   /* Primary & Accent Colors */
-  --color-primary: #6366F1;
-  --color-accent: #38BDF8;
-
-  /* Backgrounds */
-  --color-page-bg: #F8FAFC;
-  --color-surface: #FFFFFF;
-
-  /* Text Colors */
-  --color-text-primary: #1E293B;
-  --color-text-muted: #64748B;
-
-  /* Status Colors */
-  --color-success: #10B981;
-  --color-danger: #F43F5E;
-
-  /* Link Color */
-  --color-link: #0EA5E9;
-  --color-link-hover: #0369A1;
+  --color-01 : #FF9149;
+  --color-02 : #AFDDFF;
+  --color-03 : #FFECDB;
+  --color-04 : #60B5FF;
+  --color-05 : #fff9f3;
+  
 }
 /* Backgrounds */
-.bg-primary {
-  background-color: var(--color-primary);
+.bg-1 {
+  background-color: var(--color-01);
 }
-.bg-accent {
-  background-color: var(--color-accent);
+.bg-2 {
+  background-color: var(--color-02);
 }
-.bg-page {
-  background-color: var(--color-page-bg);
+.bg-3 {
+  background-color: var(--color-03);
 }
-.bg-surface {
-  background-color: var(--color-surface);
+.bg-4 {
+  background-color: var(--color-04);
 }
-.bg-success {
-  background-color: var(--color-success);
-}
-.bg-danger {
-  background-color: var(--color-danger);
+.bg-5 {
+  background-color: var(--color-05);
 }
 
 /* Text */
-.text-primary {
-  color: var(--color-primary) !important;
+.text-1 {
+  color: var(--color-01) !important;
 }
-.text-accent {
-  color: var(--color-accent);
+.text-2 {
+  color: var(--color-02);
 }
-.text-dark {
-  color: var(--color-text-primary);
+.text-3 {
+  color: var(--color-03);
 }
-.text-muted {
-  color: var(--color-text-muted);
-}
-.text-surface {
-  color: var(--color-surface);
-}
-.text-success {
-  color: var(--color-success);
-}
-.text-danger {
-  color: var(--color-danger);
+.text-4 {
+  color: var(--color-04);
 }
 .text-link {
   color: var(--color-link);
@@ -70,8 +46,14 @@
   text-decoration: underline;
 }
 .btn-create{
-  background-color: var(--color-link) !important;
-  color: var(--color-page-bg) !important;
+  background-color: var(--color-01) !important;
+  color: white !important;
+}
+
+.btn-create:hover{
+  background-color: white !important;
+  color: var(--color-01) !important;
+  border:  var(--color-01) 1px solid !important;
 }
 
 /* Buttons */
@@ -110,4 +92,18 @@
 }
 .form-control:focus {
   box-shadow: unset !important;
+}
+.navbar-01 a{
+  text-decoration: none;
+}
+
+.nav-link, .nav-tab{
+  text-decoration: none;
+  color: #554f4f !important;
+  font-weight: normal;
+}
+.nav-link-active{
+  text-decoration: none;
+  color: white !important;
+  font-weight: bold !important;
 }

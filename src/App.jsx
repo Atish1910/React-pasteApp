@@ -1,4 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css"
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Navbar from "./components/Navbar"
 import Home from "./components/Home"
@@ -9,11 +10,11 @@ const router = createBrowserRouter(
   [
     {
       path : "",
-      element: 
-      <div className="">
+      element:
+      <>
         <Navbar></Navbar>
         <Home></Home>
-      </div>
+      </> 
     },
     {
       path : "/pastes",
