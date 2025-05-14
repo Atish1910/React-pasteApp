@@ -36,11 +36,11 @@ const Paste = () =>{
                             filteredData.length > 0 &&
                             filteredData.map((paste) =>{
                                 return(
-                                    <div className="row  justify-content-center mb-3" key={paste._id}>
+                                    <div className="row  justify-content-center mb-3" key={paste?._id}>
                                         <div className="col-lg-11   border rounded-3 py-2 bg-white">
                                             <div className="row justify-content-between align-items-center">
                                                 <div className="col-lg-10">
-                                                    <h4 className="h2 fw-bold">{paste.title}</h4>
+                                                    <h4 className="h2 fw-bold">{paste?.title}</h4>
                                                 </div>
                                                 <div className="col-lg-2">
                                                     

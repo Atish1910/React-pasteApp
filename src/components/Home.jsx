@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { addToPastes, updateToPastes } from "../redux/pasteSlice";
+import { addToPastes, updatePastes } from "../redux/pasteSlice";
 import { useForm } from "react-hook-form";
 
 
@@ -31,7 +31,7 @@ function Home(){
         }
         if(pasteId){
             // update
-            dispatch(updateToPastes(paste));
+            dispatch(updatePastes(paste));
         }
         else{
             // Create

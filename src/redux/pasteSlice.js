@@ -18,15 +18,17 @@ export const pasteSlice = createSlice({
       localStorage.setItem("pastes", JSON.stringify(state.pastes));
       toast("Paste Created Successfully")
     },
-    updateToPastes: (state,action) => {
-      const paste = action.payload;
+    updatePastes: (state, action) => {
+      const paste = action.payload
       const index = state.pastes.findIndex((item) => item._id === paste._id)
-      
-      if(index >= 0){
-        state.pastes[index] = paste;
 
-        localStorage.setItem("pastes", JSON.stringify(state.pastes));
-        toast.success("Paste Updated")
+      if (index >= 0) {
+        // If the course is found in the Pastes, update it
+        state.pastes[index] = paste
+        // Update to localstorage
+        localStorage.setItem("pastes", JSON.stringify(state.pastes))
+        // show toast
+        toast.success("Paste updated")
       }
     },
     resetAllPastes: (state, action) => {
@@ -49,6 +51,6 @@ export const pasteSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addToPastes, updateToPastes, resetAllPastes, removeFromPastes } = pasteSlice.actions
+export const { addToPastes, updatePastes, resetAllPastes, removeFromPastes } = pasteSlice.actions
 
 export default pasteSlice.reducer

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
-import { addToPastes, updateToPastes } from "../redux/pasteSlice";
+import { addToPastes, updatePastes } from "../redux/pasteSlice";
 
 function ViewPaste(){
     const {id} = useParams();
